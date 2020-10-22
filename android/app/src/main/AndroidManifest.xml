@@ -1,6 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cr0manty.unsplash_photo">
-   <application
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
         android:label="unsplash_photo"
         android:icon="@mipmap/ic_launcher">
         <activity

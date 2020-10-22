@@ -29,11 +29,13 @@ class _PhotoGalleryState extends State<PhotoGallery> {
           stream: _model.onLoad,
           initialData: _model.posts,
           builder: (context, snapshot) {
-            return ListView.builder(
-              controller: _scrollController,
-              itemCount: snapshot.data.length,
-              itemBuilder: (context, index) => PhotoGalleryElement(
-                post: snapshot.data[index],
+            return CupertinoScrollbar(
+              child: ListView.builder(
+                controller: _scrollController,
+                itemCount: snapshot.data.length,
+                itemBuilder: (context, index) => PhotoGalleryElement(
+                  post: snapshot.data[index],
+                ),
               ),
             );
           }),

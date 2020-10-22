@@ -16,7 +16,9 @@ class PhotoGalleryModel {
   }
 
   void _scrollListener() {
-    if (_scrollController.position.extentAfter == 0) {
+    if (_scrollController.offset >=
+            _scrollController.position.maxScrollExtent &&
+        !_scrollController.position.outOfRange) {
       fetchData();
     }
   }
