@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:unsplash_photo/utils/hex_color.dart';
 import 'package:unsplash_photo/view/photo_gallery/photo_gallery_screen.dart';
 
 void main() {
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: CupertinoThemeData(
         brightness: Brightness.dark,
-        scaffoldBackgroundColor: Color(0x222222)
+        scaffoldBackgroundColor: HexColor.scaffoldBackground
       ),
       home: PhotoGallery(),
     );
