@@ -1,7 +1,8 @@
 import 'package:unsplash_photo/models/author.dart';
 
 class Post {
-  String name;
+  String description;
+  String altDescription;
   Author author;
   String miniUrl;
   String fullUrl;
@@ -10,13 +11,17 @@ class Post {
     this.author,
     this.fullUrl,
     this.miniUrl,
-    this.name,
+    this.description,
+    this.altDescription,
   });
 
   factory Post.fromJson(Map<String, dynamic> data) => Post(
-        name: data['alt_description'],
+        altDescription: data['alt_description'],
+        description: data['description'],
         author: Author.fromJson(data['user']),
         miniUrl: data['urls']['thumb'],
         fullUrl: data['urls']['full'],
       );
+
+  String get name => description ?? altDescription ?? 'Unknown';
 }

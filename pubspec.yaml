@@ -13,6 +13,7 @@ dependencies:
   cupertino_icons:
   http:
   http_interceptor:
+  photo_view:
 
 dev_dependencies:
   flutter_test:

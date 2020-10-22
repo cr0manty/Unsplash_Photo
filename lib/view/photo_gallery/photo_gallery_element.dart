@@ -13,13 +13,13 @@ class PhotoGalleryElement extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 150,
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: GestureDetector(
           onTap: () {
             Navigator.of(context).push(
               CupertinoPageRoute(
                 builder: (context) => DetailPhotoView(
-                  post.fullUrl,
+                  post,
                 ),
               ),
             );
@@ -32,39 +32,70 @@ class PhotoGalleryElement extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Container(
-                  padding: EdgeInsets.all(8),
-                  child: ClipOval(
-                    child: ImageView(
-                      post.miniUrl,
+                Flexible(
+                  flex: 1,
+                  child: Container(
+                    padding: EdgeInsets.all(8),
+                    child: ClipOval(
+                      child: ImageView(
+                        post.miniUrl,
+                        height: 80,
+                        width: 80,
+                      ),
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.all(8),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(post.name ?? 'Unknown'),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(right: 8),
-                            child: ClipOval(
-                              child: ImageView(
-                                post.author?.photo,
-                                height: 35,
-                                width: 35,
-                                indicatorSize: 7,
+                Flexible(
+                  flex: 2,
+                  child: Padding(
+                    padding: EdgeInsets.all(8),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          post.name,
+                          overflow: TextOverflow.clip,
+                          maxLines: 2,
+                          style: TextStyle(
+                            fontSize: 17,
+                            color: CupertinoColors.white,
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(right: 8),
+                              child: ClipOval(
+                                child: ImageView(
+                                  post.author?.photo,
+                                  height: 35,
+                                  width: 35,
+                                  indicatorSize: 7,
+                                ),
                               ),
                             ),
-                          ),
-                          Text(post.name ?? 'Unknown')
-                        ],
-                      )
-                    ],
+                            Flexible(
+                              flex: 3,
+                              child: Container(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  post.author.fullName,
+                                  maxLines: 2,
+                                  textAlign: TextAlign.start,
+                                  overflow: TextOverflow.clip,
+                                  style: TextStyle(
+                                    color: CupertinoColors.white,
+                                    fontSize: 13
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 )
               ],

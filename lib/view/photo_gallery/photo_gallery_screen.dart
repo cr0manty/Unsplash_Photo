@@ -18,7 +18,7 @@ class _PhotoGalleryState extends State<PhotoGallery> {
   void initState() {
     super.initState();
     _model = PhotoGalleryModel(_scrollController);
-    // _model.fetchData();
+    _model.fetchData();
   }
 
   @override
@@ -30,6 +30,7 @@ class _PhotoGalleryState extends State<PhotoGallery> {
           initialData: _model.posts,
           builder: (context, snapshot) {
             return ListView.builder(
+              controller: _scrollController,
               itemCount: snapshot.data.length,
               itemBuilder: (context, index) => PhotoGalleryElement(
                 post: snapshot.data[index],
